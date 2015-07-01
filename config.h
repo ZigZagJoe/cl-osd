@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #ifdef GPS_ENABLED
 #define GRAPICSENABLED
 #endif //GPS_ENABLED
+
 #define TEXT_ENABLED
 #define TIME_ENABLED
 #define ADC_ENABLED
@@ -45,9 +46,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 
 // ----------- ALARMS --------------
 //Alarms (Comment to disable)
-#define ALARM_BATT1_LOW 5.00 //Warn if below this level (in volt)
+#define ALARM_BATT1_LOW 10.60 //Warn if below this level (in volt)
 #define ALARM_BATT2_LOW 0.00 //Warn if below this level (in volt)
-//#define ALARM_RSSI_LOW 50 //Warn if below this level (in %)
+#define ALARM_RSSI_LOW 50 //Warn if below this level (in %)
+
 #define ALARM_SPEED_HIGH 200 //Warn if above this level (in kmph/mph)
 #define ALARM_ALTITUDE_LOW 0 //Warn if below this level (in meters/feet)
 #define ALARM_ALTITUDE_HIGH 5000 //Warn if above this level (in meters/feet)
@@ -81,8 +83,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.*
 #else
 #define SENSOR_RSSI_INPUT ANALOG_IN_2
 #endif
-#define SENSOR_RSSI_MAX_VOLTAGE 5.0 //(Max two digits after the dot)
-#define SENSOR_RSSI_MIN_VOLTAGE 1.2
+#define SENSOR_RSSI_MAX_VOLTAGE 1.2 //(Max two digits after the dot)
+#define SENSOR_RSSI_MIN_VOLTAGE 0.7
 //#define SENSOR_RSSI_REVERSED // If a low voltage value means high signal strength and vice versa, then enable this. (Thanks BlueAngel2000)
 #endif //SENSOR_RSSI_ENABLED
 

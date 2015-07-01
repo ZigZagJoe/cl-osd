@@ -2,8 +2,13 @@
 # Tested with r65 on ubuntu 11.10.
 # Note that this may not be up-to-date. YMMV.
 
+MCU = atmega88
+PROGRAMMER = -cusbtiny
+
+ADFLAGS += -v -v -p$(MCU) $(PROGRAMMER) -e -D	
+	
 CC=avr-gcc
-CFLAGS=-funsigned-char -funsigned-bitfields -Os -fno-split-wide-types -g0 -Wall -std=gnu99 -Wno-main -mmcu=atmega88
+CFLAGS=-funsigned-char -funsigned-bitfields -Os -fno-split-wide-types -g0 -Wall -std=gnu99 -Wno-main -mmcu=atmega88 -DE_OSD
 
 all: cl-osd
 	avr-objcopy -O ihex -R .eeprom -R .fuse -R .lock -R .signature "cl-osd" "cl-osd.hex"
@@ -14,3 +19,6 @@ cl-osd: cl-osd.c
 
 clean:
 	-rm -f cl-osd cl-osd.o cl-osd.lss cl-osd.hex cl-osd.eep
+
+upload:
+	avrdude $(ADFLAGS) -e -Uflash:w:cl-osd.hex:i -Ueeprom:w:cl-osd.eep:i
